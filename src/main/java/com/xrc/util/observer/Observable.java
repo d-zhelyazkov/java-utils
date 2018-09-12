@@ -1,26 +1,14 @@
 package com.xrc.util.observer;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
+import java.util.function.Consumer;
 
-public abstract class Observable {
+public interface Observable<T extends Observer> {
 
-    private final Collection<Observer> observers = new HashSet<>();
+    void subscribe(T observer);
 
-    public void addObserver(Observer observer) {
-        observers.add(observer);
-    }
+    void unsubscribe(T observer);
 
-    public void removeObserver(Observer observer) {
-        observers.remove(observer);
-    }
+    void notifyObservers();
 
-    protected void notifyObservers() {
-
-        for (Observer observer : new ArrayList<>(observers)) {
-            observer.notify(this);
-        }
-    }
-
+    void notifyObservers(Consumer<T> notifyTask);
 }

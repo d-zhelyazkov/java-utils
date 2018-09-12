@@ -5,6 +5,7 @@ public interface Observer {
     /**
      * @param object the object that notifies this Observer
      */
-    void notify(Observable object);
+    default void notify(Observable object) {
+    }
 
 }

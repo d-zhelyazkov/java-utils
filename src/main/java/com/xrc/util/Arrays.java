@@ -1,6 +1,8 @@
 package com.xrc.util;
 
 import java.awt.geom.Point2D;
+import java.util.Collection;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -30,5 +32,10 @@ public class Arrays {
     @SafeVarargs
     public static <T> Set<T> asSet(T... array) {
         return new HashSet<>(java.util.Arrays.asList(array));
+    }
+
+    public static <T> T max(T[] array, Comparator<T> comparator) {
+        Collection<T> list = java.util.Arrays.asList(array);
+        return java.util.Collections.max(list, comparator);
     }
 }

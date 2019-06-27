@@ -4,7 +4,9 @@ import java.awt.geom.Point2D;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
+import java.util.function.Predicate;
 
 public class Arrays {
 
@@ -37,5 +39,22 @@ public class Arrays {
     public static <T> T max(T[] array, Comparator<T> comparator) {
         Collection<T> list = java.util.Arrays.asList(array);
         return java.util.Collections.max(list, comparator);
+    }
+
+    public static boolean isEmpty(int[] array) {
+        return ((array == null) || (array.length == 0));
+    }
+
+    public static boolean contains(int[] arr, int value) {
+        return java.util.Arrays.stream(arr)
+                .anyMatch(i -> (i == value));
+    }
+
+    public static <T> T find(T[] arr, Predicate<T> predicate) {
+        Optional<T> result = java.util.Arrays.stream(arr)
+                .filter(predicate)
+                .findAny();
+
+        return result.orElse(null);
     }
 }

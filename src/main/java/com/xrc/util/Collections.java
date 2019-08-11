@@ -1,9 +1,11 @@
 package com.xrc.util;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 public class Collections {
 
@@ -19,5 +21,18 @@ public class Collections {
 
     public static <T> T getRandomElement(List<T> elements) {
         return elements.get(new Random().nextInt(elements.size()));
+    }
+
+    public static <T> Set<T> symmetricDifference(Collection<T> collection1, Collection<T> collection2) {
+        Set<T> result = new HashSet<>(collection1.size() + collection2.size());
+        result.addAll(collection1);
+        for (T element : collection2) {
+            if (result.contains(element)) {
+                result.remove(element);
+            } else {
+                result.add(element);
+            }
+        }
+        return result;
     }
 }

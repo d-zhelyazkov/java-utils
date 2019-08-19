@@ -35,4 +35,25 @@ public class Collections {
         }
         return result;
     }
+
+    public static <T> boolean isOrdered(List<T> list, java.util.Comparator<T> comparator) {
+
+        int elements = list.size();
+        if (elements <= 1) {
+            return true;
+        }
+
+        Comparator<T> exComparator = new Comparator<>(comparator);
+        for (int i = 0; i < elements - 1; i++) {
+            if (exComparator.greater(list.get(i), list.get(i + 1)))
+                return false;
+        }
+
+        return true;
+    }
+
+    public static <T extends Comparable<? super T>> boolean isOrdered(List<T> list) {
+        return isOrdered(list, java.util.Comparator.naturalOrder());
+    }
+
 }

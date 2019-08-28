@@ -1,5 +1,6 @@
 package com.xrc.util;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -21,6 +22,26 @@ public class Collections {
 
     public static <T> T getRandomElement(List<T> elements) {
         return elements.get(new Random().nextInt(elements.size()));
+    }
+
+    public static <T> Collection<T> difference(Collection<T> collection1, Collection<T> collection2) {
+        Collection<T> result = new HashSet<>(collection1);
+        result.removeAll(collection2);
+        return result;
+    }
+
+    public static <T> Collection<T> difference(T[] collection1, Collection<T> collection2) {
+        return difference(
+                Arrays.asList(collection1),
+                collection2
+        );
+    }
+
+    public static <T> Collection<T> difference(Collection<T> collection1, T[] collection2) {
+        return difference(
+                collection1,
+                Arrays.asList(collection2)
+        );
     }
 
     public static <T> Set<T> symmetricDifference(Collection<T> collection1, Collection<T> collection2) {

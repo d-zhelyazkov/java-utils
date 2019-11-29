@@ -1,6 +1,5 @@
 package com.xrc.awt;
 
-import java.awt.Dimension;
 import java.util.Comparator;
 
 public class DimensionByAreaComparator implements Comparator<Dimension> {

@@ -1,6 +1,7 @@
 package com.xrc.util;
 
-import java.awt.geom.Point2D;
+import com.xrc.awt.geom.Point2D;
+
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.HashSet;
